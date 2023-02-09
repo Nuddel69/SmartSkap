@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <!-- Styles -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='styles.css')}}"
+    />
+
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Digishelf</title>
+    {% endif %}
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- For screenreader-->
+    <!-- <a class="sr-only sr-only-focusable" href="#productsearch" -->
+    <!--   >Hopp til søkeboks</a -->
+    <!-- > -->
+
+    <!-- Top nav-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="/home">DigiShelf</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="modal"
+                data-bs-target="#helpModal"
+                href="#"
+                >Hjelp&nbsp;<i class="fa-regular fa-circle-question"></i
+              ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about"
+                >Om prosjektet&nbsp;&nbsp;<i
+                  class="fa-solid fa-arrow-up-right-from-square"
+                ></i
+              ></a>
+            </li>
+          </ul>
+          <button
+            class="btn btn-outline-dark"
+            type="button"
+            id="cart-button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+            Se bestilling
+            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Help modal -->
+    <div
+      class="modal fade"
+      id="helpModal"
+      tabindex="-1"
+      aria-labelledby="help"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Hvordan fungerer det?</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="lead">
+              Bruk katalogen til venstre for å søke etter hva som finnes i
+              systemet. Legg dem til i en bestilling før du sjekker ut med
+              knappen øverst til høyre.
+            </p>
+            <p class="lead">
+              Der vil du bli spurt om fornavn og en engangskode. Koden finnes på
+              enhetene og fungerer som en sikkerhetskode. Den skiftes ut hvert
+              5. minutt
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+              Lukk
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div
+      class="offcanvas offcanvas-end"
+      data-bs-scroll="true"
+      data-bs-backdrop="false"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasScrollingLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="fs-5 fw-semibold" id="offcanvasScrollingLabel">
+          Din bestilling
+        </h5>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul
+          class="list-group overflow-auto"
+          id="cart-list"
+          style="max-height: 600px"
+        ></ul>
+      </div>
+
+      <div class="offcanvas-footer m-3">
+        <button class="btn btn-outline-dark" type="button" id="remove-cart">
+          <i class="fa-solid fa-trash-can"></i>
+          Fjern bestilling
+        </button>
+
+        <a class="btn btn-outline-dark" id="order-cart">
+          <i class="fa-solid fa-boxes-packing"></i>
+          Last opp bestilling
+        </a>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">{% block body %}{% endblock %}</div>
+
+    <!-- Footer -->
+    <footer class="py-5 mt-auto bg-dark">
+      <div class="container">
+        <div class="row mx-4">
+          <a class="col-12 col-sm-4 text-center text-white" href="/about"
+            >Om prosjektet</a
+          >
+          <p class="col-12 col-sm-4 text-center text-white">
+            DigiShelf &copy; 2022
+          </p>
+          <a class="col-12 col-sm-4 text-center text-white" href="/login"
+            >Logg inn som administrator</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/172d7e70e8.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
