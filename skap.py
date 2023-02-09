@@ -78,7 +78,8 @@ class Skap:
         pass
 
     def move(self):
-        self._serial.write(b'G0 F1000 X100 Y100 Z100');
+        self._serial.write(b'G1 F100 Y10');
+        print("Moving...");
 
     def push(self):
         pass
@@ -102,7 +103,7 @@ if __name__ == "__main__":
     request4x4 = [2, 13, 14, 32];
     
     # Den serielle porten motorene er koblet ti
-    port = '/dev/ttyUSB0'
+    port = '/dev/ttyACM0'
     
     # Lage objektene som brukes
     kameraOBJ = Camera(1, [1]);
