@@ -1,5 +1,19 @@
 import math
+import time
 import serial
+from datetime import datetime
+
+def command(ser, command):
+  start_time = datetime.now()
+  ser.write(str.encode(command)) 
+  time.sleep(1)
+
+  while True:
+    line = ser.readline()
+    print(line)
+
+    if line == b'ok\n':
+      break
 
 class Camera:
     def __init__(self, camPort, QR_Index) -> None:
@@ -22,7 +36,7 @@ class Camera:
 class Skap:
     def __init__(self, camera: Camera, motorControlPort: str, boxes: list[int], boxesHeight: int) -> None:
         self._camera = camera;
-        self._serial = serial.Serial(motorControlPort);
+        self._serial = serial.Serial(motorControlPort, 9600);
         self._boxes = boxes;
         self._height = boxesHeight;
         print(f"Connected at port {self._serial.name}");
@@ -78,8 +92,11 @@ class Skap:
         pass
 
     def move(self):
-        self._serial.write(b'G1 F100 Y10');
         print("Moving...");
+        command(ser, "G0 X7 \r\n") # rapid motion but does not extrude material
+        command(ser, "G0 F10000 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
+        #command(ser, "G1 F20000 Z0.564\r\n") # change layer
+        command(ser, "G0 F10000 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
 
     def push(self):
         pass
@@ -114,3 +131,7 @@ if __name__ == "__main__":
 
     while True:
         skapOBJ.move();
+        time.sleep(10)
+
+    time.sleep(2)
+    ser.close()

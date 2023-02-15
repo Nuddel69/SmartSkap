@@ -18,7 +18,7 @@ def about():
 @app.route("/login")
 def login():
     adminLogin = AdminLogin()
-    return render_template('login.html', title='Login', login=adminLogin)
+    return render_template('login.html', title='Login', form=adminLogin)
 
 if __name__ == "__main__":
     app.run(debug=True)

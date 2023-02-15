@@ -4,11 +4,11 @@ from wtforms import StringField, SubmitField, PasswordField, SelectField
 from wtforms.validators import DataRequired, Length
 
 class BoxRegistration(FlaskForm):
-    item_name = StringField('Navn', validators=[DataRequired(), Length(min=1, max=15)])
-    box_nr = StringField('fe2', validators=[DataRequired(), Length(min=1, max=4)])
-    # category = SelectField()
+    item_name = StringField('Navn', validators=[DataRequired(), Length(min=1, max=15)], render_kw={"placeholder": "Navn"})
+    box_nr = StringField('Eskenr.', validators=[DataRequired(), Length(min=1, max=4)], render_kw={"placeholder": "fe2"})
+    category = SelectField('Kategori', choices=['Komponenter', 'Skruer', 'Bolter og muttere', 'Annet'], validators=[DataRequired()])
 
-    submit = SubmitField('Legg til i katalog')
+    submit = SubmitField('<i class="fa-solid fa-circle-plus"></i>Legg til i katalog')
     order_empty = SubmitField('Bestill tom boks')
 
 class Login(FlaskForm):

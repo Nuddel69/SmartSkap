@@ -86,48 +86,32 @@
           <div class="tab-pane" id="add-new">
             <h1 class="display-5 fw-bolder">Registrer nytt innhold</h1>
 
-            <form>
-              <div class="mb-3">
-                <label for="validationServer01">Navn</label>
-                <input
-                  type="text"
-                  class="form-control is-valid"
-                  placeholder="Navn"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="validationServer01">Eskenr.</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend3"
-                      >#</span
-                    >
-                  </div>
-
-                  <input
-                    type="text"
-                    class="form-control is-valid"
-                    placeholder="#fe2"
-                    required
-                  />
+            <form method="POST" action="">
+              {{ box.hidden_tag() }}
+              <fieldset class="form-group mb-4">
+                <!-- Item name -->
+                <div class="mb-3">
+                  {{ box.item_name.label() }} {{
+                  box.item_name(class='form-control is-valid') }}
                 </div>
-              </div>
 
-              <div class="mb-3">
-                <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
-                  >Kategori</label
-                >
-                <select class="form-select" aria-label="Default select example">
-                  <option selected disabled>Kategori</option>
-                  <option value="1">Komponenter</option>
-                  <option value="2">Skruer</option>
-                  <option value="3">Bolter og muttere</option>
-                  <option value="4">Annet</option>
-                </select>
-              </div>
+                <!-- Box nr. -->
+                <div class="mb-3">
+                  {{ box.box_nr.label() }}
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">#</span>
+                    </div>
+                    {{ box.box_nr(class='form-control is-valid') }}
+                  </div>
+                </div>
 
+                <!-- Category -->
+                <div class="mb-3">
+                  {{ box.category.label(class='my-1 mr-2') }} {{
+                  box.category(class='form-select') }}
+                </div>
+              </fieldset>
               <button
                 class="btn btn-outline-dark"
                 type="button"
