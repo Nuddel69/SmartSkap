@@ -93,10 +93,10 @@ class Skap:
 
     def move(self):
         print("Moving...");
-        command(ser, "G0 X7 \r\n") # rapid motion but does not extrude material
-        command(ser, "G0 F10000 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
-        #command(ser, "G1 F20000 Z0.564\r\n") # change layer
-        command(ser, "G0 F10000 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
+        command(self._serial, "G0 X7 \r\n") # rapid motion but does not extrude material
+        command(self._serial, "G0 F10000 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
+        #command(self._serial, "G1 F20000 Z0.564\r\n") # change layer
+        command(self._serial, "G0 F10000 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
 
     def push(self):
         pass
@@ -131,7 +131,7 @@ if __name__ == "__main__":
 
     while True:
         skapOBJ.move();
-        time.sleep(10)
+        time.sleep(2)
 
     time.sleep(2)
     ser.close()
