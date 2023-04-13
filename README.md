@@ -1,5 +1,5 @@
 </p><h1>Automatisert Skapsystem</h1>
-<p>Dette prosjektet har som formål å automatisere et skap med et rutenett av 6x6 hull hvor bokser kan plasseres. Hver boks har en unik QR-kode på baksiden, som skannes av en arm på baksiden av skapet når en ny boks blir satt inn. Informasjon om boksens posisjon blir da lagret i en SQL-database. Et webgrensesnitt er tilgjengelig for å registrere bokser og legge inn bestillinger. Systemet er drevet av en Raspberry Pi, og motorene styres gjennom G-Code.</p>
+<p>Dette prosjektet har som formål å automatisere et skap med et rutenett av 6x6 hull hvor bokser kan plasseres. Hver boks har en unik QR-kode på baksiden, som skannes av en arm på baksiden av skapet når en ny boks blir satt inn. Informasjon om boksens posisjon og innhold blir da lagret i en SQL-database. Et webgrensesnitt er tilgjengelig for å registrere bokser og legge inn bestillinger. Systemet er drevet av en Raspberry Pi, og motorene styres gjennom G-Code.</p>
 
 <p><img src="./media/grensesnitt.png" alt="Webgrensesnitt"></p>
 
@@ -14,12 +14,12 @@
     <tr><th>Teknologi</th><th>Beskrivelse</th></tr>
 </thead>
     <tbody>
-        <tr><td style="vertical-align: top;"><img src="./media/logo_python.png" alt="Python Logo" width="25px" height="25px">Python</td><td>Hovedprogrammeringsspråket for alle bevegelige deler</td></tr>
-        <tr><td style="vertical-align: top;">Flask</td><td>Web-rammeverk for kommunikasjon mellom webgrensesnittet og python</td></tr>
-        <tr><td style="vertical-align: top;">HTML, CSS og JS</td><td>Språkene brukt for å skrive webgrensesnittet</td></tr>
-        <tr><td style="vertical-align: top;">SQL</td><td>Database for å lagre informasjon om boksene</td></tr>
-        <tr><td style="vertical-align: top;">raspberry pi</td><td>microcomputer for å styre systemet</td></tr>
-        <tr><td style="vertical-align: top;">G-Code</td><td>Språk for å kontrollere bevegelse av motorene</td></tr>
+        <tr><td>Python</td><td>Hovedprogrammeringsspråket for alle bevegelige deler</td></tr>
+        <tr><td>Flask</td><td>Web-rammeverk for kommunikasjon mellom webgrensesnittet og python</td></tr>
+        <tr><td>HTML, CSS og JS</td><td>Språkene brukt for å skrive webgrensesnittet</td></tr>
+        <tr><td>SQL</td><td>Database for å lagre informasjon om boksene</td></tr>
+        <tr><td>Raspberry pi</td><td>microcomputer for å styre systemet</td></tr>
+        <tr><td>G-Code</td><td>Språk for å kontrollere bevegelse av motorene</td></tr>
     </tbody>
 </table>
 
