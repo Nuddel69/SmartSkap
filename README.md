@@ -5,7 +5,12 @@
 
 <h2>Hvordan det fungerer</h2>
 <p>For å bruke systemet kan du følge disse trinnene:</p>
-<ol><li>Registrere bokser ved å navigere til "Legg til boks"-fanen på webgrensesnittet og fylle ut informasjonen om boksen.</li><li>Legge inn en bestilling ved å gå til "Legg til bestilling"-fanen og velge produktene du ønsker å bestille fra rullegardinmenyen. Trykk deretter på "Bestill" knappen.</li><li>Systemet vil automatisk bevege armen rundt for å finne boksene som inneholder produktene i bestillingen. Når boksene er funnet, vil de bli skjøvet ut av skapet.</li></ol>
+<ol>
+    <li>Registrere bokser ved å navigere til "Legg til boks"-fanen på webgrensesnittet og fylle ut informasjonen om boksen.</li>
+    <li>Legge inn en bestilling ved å gå til "Legg til bestilling"-fanen og velge produktene du ønsker å bestille fra rullegardinmenyen. Trykk deretter på "Bestill" knappen.</li>
+    <li>Systemet vil automatisk bevege armen rundt for å finne boksene som inneholder produktene i bestillingen. Når boksene er funnet, vil de bli skjøvet ut av skapet.</li>
+    <li>Systemet vil, men gjevne mellomrom gå igjennom og oppdatere inventaret ved å skanne kodene på alle boksene</li>
+</ol>
 
 <h2>Teknologi</h2>
 <p>Dette prosjektet er bygget med følgende teknologier:</p>
