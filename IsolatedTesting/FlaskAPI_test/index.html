@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Button Example</title>
+    <title>Save Message Example</title>
 </head>
 <body>
-    <script src="index.js"></script>
-    <button id="myButton">Legg til bokser</button>
-
+    <button id="saveButton">Save Message</button>
+    <script>
+        const saveButton = document.getElementById('saveButton');
+        saveButton.addEventListener('click', () => {
+            const message = 'Hello, world!';
+            fetch('/save-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        });
+    </script>
 </body>
 </html>
