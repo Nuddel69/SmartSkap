@@ -9,7 +9,19 @@
 
 <h2>Teknologi</h2>
 <p>Dette prosjektet er bygget med følgende teknologier:</p>
-<table><thead><tr><th>Teknologi</th><th>Beskrivelse</th></tr></thead><tbody><tr><td>Python</td><td>Hovedprogrammeringsspråket for alle bevegelige deler</td></tr><tr><td>Flask</td><td>Web-rammeverk for kommunikasjon mellom webgrensesnittet og python</td></tr><tr><td>HTML, CSS og JS</td><td>Språkene brukt for å skrive webgrensesnittet</td></tr><td>Database for å lagre informasjon om boksene</td></tr><tr><td>raspberry pi</td><td>microcomputer for å styre systemet</td></tr><tr><td>G-Code</td><td>Språk for å kontrollere bevegelse av motorene</td></tr></tbody></table>
+<table>
+<thead>
+    <tr><th>Teknologi</th><th>Beskrivelse</th></tr>
+</thead>
+    <tbody>
+        <tr><td>Python</td><td>Hovedprogrammeringsspråket for alle bevegelige deler</td></tr>
+        <tr><td>Flask</td><td>Web-rammeverk for kommunikasjon mellom webgrensesnittet og python</td></tr>
+        <tr><td>HTML, CSS og JS</td><td>Språkene brukt for å skrive webgrensesnittet</td></tr>
+        <tr><td>SQL</td><td>Database for å lagre informasjon om boksene</td></tr>
+        <tr><td>raspberry pi</td><td>microcomputer for å styre systemet</td></tr>
+        <tr><td>G-Code</td><td>Språk for å kontrollere bevegelse av motorene</td></tr>
+    </tbody>
+</table>
 
 <h2>Lisens</h2>
 <p>Dette prosjektet er lisensiert under MIT-lisensen. Se LICENSE-filen for mer informasjon.</p></div>
