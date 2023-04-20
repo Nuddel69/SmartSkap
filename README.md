@@ -3,7 +3,7 @@
 
 <p><img src="./media/grensesnitt.png" alt="Webgrensesnitt"></p>
 
-<h2>Hvordan det fungerer</h2>
+<h2>Hvordan fungerer det</h2>
 <p>For å bruke systemet kan du følge disse trinnene:</p>
 <ol>
     <li>Registrere bokser ved å navigere til "Legg til boks"-fanen på webgrensesnittet og fylle ut informasjonen om boksen.</li>
