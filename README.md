@@ -3,6 +3,22 @@
 
 <p><img src="./media/grensesnitt.png" alt="Webgrensesnitt"></p>
 
+<h2>Til Herman og Sukhmani</h2>
+Hvordan bruke venv
+<br>
+For å gå inn i venv
+<ol>
+	<li>Pass på at du er i Smartskap/ mappen</li>
+	<li>Skriv `source Skap-venv/bin/activate`</li>
+	<li>Se til at det står `(Skap-venv)` helt foran på hver linje</li>
+</ol>
+<br>
+For å gå ut av venv
+<ol>
+	<li>Fra hvor som helst på systemet</li>
+	<li>Skriv `deactivate`</li>
+</ol>
+
 <h2>Hvordan fungerer det</h2>
 <p>For å bruke systemet kan du følge disse trinnene:</p>
 <ol>
