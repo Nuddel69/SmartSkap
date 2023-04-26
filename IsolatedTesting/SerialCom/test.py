@@ -2,8 +2,8 @@ import serial
 import time
 from datetime import datetime
 
-posX: float = 0.0;
-posY: float = 0.0;
+posX: float = 0.0
+posY: float = 0.0
 
 def command(ser, command):
   start_time = datetime.now()
