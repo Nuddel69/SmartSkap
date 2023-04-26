@@ -20,8 +20,8 @@ def command(ser, command):
 ser = serial.Serial('/dev/ttyACM0', 9600)
 time.sleep(2)
 
-# Move
-command(ser, "G91\r\n") # rapid motion but does not extrude material
+# Initialize serial device
+command(ser, "G91\r\n")
 
 
 def scanBox():
@@ -41,6 +41,7 @@ def findBox(boxcode):
 
 
 
+
 def move(distX, distY) -> None:
     global posX
     global posY
@@ -55,6 +56,7 @@ def move(distX, distY) -> None:
 
     print(posX)
     print(posY)
+
 
 #command(ser, "G0 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
 #command(ser, "G1 F20000 Z0.564\r\n") # change layer
