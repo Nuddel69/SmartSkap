@@ -35,7 +35,7 @@
                     <button class="btn btn-outline-dark" type="button" id="cart-button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                         <i class="fa-solid fa-cart-shopping"></i>
                         Se bestilling
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill cart-nr">0</span>
                     </button>
                 </div>
             </div>
@@ -49,7 +49,11 @@
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <ul class="list-group overflow-auto" id="cart-list" style="max-height: 600px"></ul>
+                <ul class="list-group overflow-auto cart-list" style="max-height: 600px">
+                    
+                    <li class="cart-element list-group-item justify-content-between align-items-center">Maling<button class="btn"><i class="text-primary fa-regular fa-trash-can"></i></button></li>
+                
+                </ul>
             </div>
             
             <div class="offcanvas-footer m-3">
