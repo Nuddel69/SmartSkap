@@ -1,9 +1,12 @@
 import serial
+import mysql.connector
 import time
 from datetime import datetime
+import json
+import math
 
-posX: float = 0.0;
-posY: float = 0.0;
+posX: float = 0.0
+posY: float = 0.0
 
 def command(ser, command):
   start_time = datetime.now()
@@ -20,8 +23,8 @@ def command(ser, command):
 ser = serial.Serial('/dev/ttyACM0', 9600)
 time.sleep(2)
 
-# Move
-command(ser, "G91\r\n") # rapid motion but does not extrude material
+# Initialize serial device
+command(ser, "G91\r\n")
 
 
 def scanBox():
@@ -40,6 +43,32 @@ def findBox(boxcode):
     return [coordX,coordY]
 
 
+def getJob():
+  # return [(3, 12), (2, 23)]
+  
+  mydb = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="my_secret_password",
+    database="app_db"
+  )
+
+  mycursor = mydb.cursor()
+
+  mycursor.execute("SELECT binID, position FROM inventory")
+
+  pos_numbers = mycursor.fetchall()
+
+  pos_index = []
+  for element in pos_numbers:
+    y = math.ceil(element[1] / 6)
+    x = (element[1] - 6*(y-1))
+
+    pos_index.append([x, y])
+
+  return pos_index
+
+
 
 def move(distX, distY) -> None:
     global posX
@@ -56,11 +85,13 @@ def move(distX, distY) -> None:
     print(posX)
     print(posY)
 
+
 #command(ser, "G0 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
 #command(ser, "G1 F20000 Z0.564\r\n") # change layer
 
 
-move(0, -70)
+positions = getJob()
+
 move(0, 70)
 time.sleep(2)
 ser.close()

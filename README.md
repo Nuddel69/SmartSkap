@@ -1,7 +1,23 @@
-</p><h1>Automatisert Skapsystem</h1>
+<h1>Automatisert Skapsystem</h1>
 <p>Dette prosjektet har som formål å automatisere et skap med et rutenett av 6x6 hull hvor bokser kan plasseres. Hver boks har en unik QR-kode på baksiden, som skannes av en arm på baksiden av skapet når en ny boks blir satt inn. Informasjon om boksens posisjon og innhold blir da lagret i en SQL-database. Et webgrensesnitt er tilgjengelig for å registrere bokser og legge inn bestillinger. Systemet er drevet av en Raspberry Pi, og motorene styres gjennom G-Code.</p>
 
 <p><img src="./media/grensesnitt.png" alt="Webgrensesnitt"></p>
+
+<h2>Guide til bidragsytere</h2>
+Hvordan bruke venv
+<br>
+For å gå inn i venv
+<ol>
+	<li>Pass på at du er i Smartskap/ mappen</li>
+	<li>Skriv `source Skap-venv/bin/activate`</li>
+	<li>Se til at det står `(Skap-venv)` helt foran på hver linje</li>
+</ol>
+<br>
+For å gå ut av venv
+<ol>
+	<li>Fra hvor som helst på systemet</li>
+	<li>Skriv `deactivate`</li>
+</ol>
 
 <h2>Hvordan fungerer det</h2>
 <p>For å bruke systemet kan du følge disse trinnene:</p>
