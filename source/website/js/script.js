@@ -227,5 +227,7 @@ document.getElementById('order-cart').addEventListener('click', () => {
 
   $( "#checkout-number" ).text(cart[username].length);
   
+  // Send results
+
   $('#orderModal').modal('show');
 });
