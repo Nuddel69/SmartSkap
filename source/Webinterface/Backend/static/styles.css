@@ -1,8 +1,0 @@
-.inventory-element,
-.cart-element {
-  display: flex;
-}
-
-#cart-list:empty::before {
-  content: "Hvis du legger til noe i bestillingen så dukker det opp her";
-}
