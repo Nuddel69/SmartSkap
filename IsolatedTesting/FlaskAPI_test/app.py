@@ -1,21 +1,24 @@
-from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
+import json
+
+from flask import request
+
+from flask import Flask, render_template
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
-db = SQLAlchemy(app)
 
-class Message(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200))
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.route('/save-message', methods=['POST'])
-def save_message():
-    message = request.json['message']
-    new_message = Message(content=message)
-    db.session.add(new_message)
-    db.session.commit()
-    return jsonify({'status': 'success'})
+@app.route('/test', methods=['POST'])
+def test():
+    output = request.get_json()
+    print(output) # This is the output that was stored in the JSON within the browser
+    print(type(output))
+    result = json.loads(output) #this converts the json output to a python dictionary
+    print(result) # Printing the new dictionary
+    print(type(result))#this shows the json converted as a python dictionary
+    return result
 
 if __name__ == '__main__':
     app.run(debug=True)
