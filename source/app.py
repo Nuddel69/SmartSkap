@@ -107,11 +107,20 @@ def cart_store():
    result = json.loads(output)
    print(result)
 
-   return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+   return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
 
+
+
+@app.route('/cart/get', methods=['POST'])
+def cart_get():
    
+   # Get username and return cart
+   cart = [1, 2]
    
-   
+   return json.dumps(json.loads(cart)), 200, {'ContentType':'application/json'}
+
+
+
 @app.route('/catalog/get', methods=['POST'])
 
 def products_get():

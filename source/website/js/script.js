@@ -108,7 +108,7 @@ $(window).on('load', function() {
       } else {
         var availability = `<span class="badge bg-danger rounded-pill">Ikke på lager</span>`;
       }
-      
+
       $( "#inventory-list" ).prepend(`<a class="inventory-element list-group-item justify-content-between align-items-center" data-bs-toggle="list" href="#pane-${product.id}">${product.name}${availability}</a>`);
       $( "#products" ).prepend(`<div class="product tab-pane" id="pane-${product.id}">
         <div class="small mb-1">BIN: #${product.bin.join(", #")}</div>
@@ -124,14 +124,19 @@ $(window).on('load', function() {
     });
 
 
-
-    cart = [1, 2];
-
     // Load Cart
+    
+    // Load cart from flask as JSON
+    cart = [];
+
     $(".cart-nr").text = cart.length;
-    cart.forEach(i => {
-      product = catalog.find(x => x.id == i);
-      console.log
+    cart.forEach(id => {
+      product = catalog.find(x => x.id == id);
+      
+      if(!product){
+        removeFromCart(id)
+        return;
+      }
 
       $( ".cart-list" ).append( `<li class="cart-element list-group-item justify-content-between align-items-center" data-productid="${product.id}">${product.name}<button class="btn" onClick="removeFromCart(${product.id})"><i class="text-primary fa-regular fa-trash-can"></i></button></li>` );
     });
