@@ -96,9 +96,15 @@ def move(distX, distY) -> None:
 time.sleep(2)
 # ser.close()
 
+@app.errorhandler(404)
+def not_found(e):
+  
+# defining function
+  return render_template("404.html")
+
 @app.route('/')
 def index():
-    return render_template('./website/index.html')
+    return render_template('index.html')
 
 
 @app.route('/test', methods=['GET'])
@@ -161,4 +167,4 @@ def containers_push():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80, debug=True)
+    app.run(host="0.0.0.0", debug=True)
