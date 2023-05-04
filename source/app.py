@@ -111,7 +111,7 @@ def cart_store():
 
 
 
-@app.route('/cart/get', methods=['POST'])
+@app.route('/cart/get', methods=['GET'])
 def cart_get():
    
    # Get username and return cart
