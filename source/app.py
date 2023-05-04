@@ -101,6 +101,11 @@ def index():
     return render_template('./website/index.html')
 
 
+@app.route('/test', methods=['GET'])
+def test():
+   return "It works"
+   
+
 @app.route('/cart/store', methods=['POST'])
 def cart_store():
    output = request.get_json()
@@ -111,7 +116,7 @@ def cart_store():
 
 
 
-@app.route('/cart/get', methods=['GET'])
+@app.route('/cart/get', methods=['POST'])
 def cart_get():
    
    # Get username and return cart
