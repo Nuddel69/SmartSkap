@@ -4,7 +4,7 @@
         "name": "10 Ω Motstander",
         "description": "Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
         "category": "Komponenter / Motstander",
-        "bin": "EC1",
+        "bin": ["EC1"],
         "availability": true
     },
     {
@@ -12,7 +12,7 @@
         "name": "20 Ω Motstander",
         "description": "Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
         "category": "Komponenter / Motstander",
-        "bin": "F3A",
+        "bin": ["F3A"],
         "availability": true
     },
     {
@@ -20,7 +20,7 @@
         "name": "Servoer",
         "description": "Servomotor er en elektrisk, hydraulisk eller pneumatisk motor som driver utstyr som skal følge en annen bevegelse, et hjelpeaggregat som forsterker utgangssignalet fra en regulator. Den muliggjør regulering av lineær eller angulær posisjon, hastighet og akselerasjon.",
         "category": "Komponenter / Motorer",
-        "bin": "BCC",
+        "bin": ["BCC", "BCD"],
         "availability": false
     },
     {
@@ -28,7 +28,7 @@
         "name": "Kondensatorer",
         "description": "Kondensator er en passiv, elektrisk komponent som består av to ledere med en isolator mellom. En kondensator har kapasitans, det vil si evne til å oppta ladning og å lagre elektrisk energi i et elektrisk felt.",
         "category": "Komponenter / Kondensatorer",
-        "bin": "23A",
+        "bin": ["23A"],
         "availability": true
     }
 ]

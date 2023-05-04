@@ -70,9 +70,15 @@ function addToCart(id){
   if(cart.includes(id)){
     return;
   }
+  
+  product = catalog.find(x => x.id == id);
+  
+  if(!product.availability){
+    return;
+  }
 
   cart.push(id);
-  product = catalog.find(x => x.id == id);
+  
   $( ".cart-list" ).append( `<li class="cart-element list-group-item justify-content-between align-items-center" data-productid="${product.id}">${product.name}<button class="btn" onClick="removeFromCart(${product.id})"><i class="text-primary fa-regular fa-trash-can"></i></button></li>` );
 
   $( ".cart-nr" ).text(cart.length);
@@ -102,10 +108,10 @@ $(window).on('load', function() {
       } else {
         var availability = `<span class="badge bg-danger rounded-pill">Ikke på lager</span>`;
       }
-
+      
       $( "#inventory-list" ).prepend(`<a class="inventory-element list-group-item justify-content-between align-items-center" data-bs-toggle="list" href="#pane-${product.id}">${product.name}${availability}</a>`);
       $( "#products" ).prepend(`<div class="product tab-pane" id="pane-${product.id}">
-        <div class="small mb-1">BIN: #${product.bin}</div>
+        <div class="small mb-1">BIN: #${product.bin.join(", #")}</div>
         <h1 class="display-5 fw-bolder">${product.name}</h1>
         <p class="fs-5 mb-2">${product.category}</p>
         <p class="lead">${product.description}</p>
