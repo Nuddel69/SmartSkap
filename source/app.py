@@ -107,9 +107,9 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/test', methods=['GET'])
+@app.route('/catalog.json', methods=['GET'])
 def test():
-   return "It works"
+   return render_template('index.html')
    
 
 @app.route('/cart/store', methods=['POST'])
