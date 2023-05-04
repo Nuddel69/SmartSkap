@@ -2,7 +2,7 @@ import json
 from flask import request
 from flask import Flask, render_template
 import serial
-import mysql.connector
+'''import mysql.connector'''
 import time
 from datetime import datetime
 import math
@@ -46,7 +46,7 @@ def findBox(boxcode):
     # Return coordinates
     return [coordX,coordY]
 
-
+'''
 def getJob():
   # return [(3, 12), (2, 23)]
   
@@ -71,7 +71,7 @@ def getJob():
     pos_index.append([x, y])
 
   return pos_index
-
+'''
 
 
 def move(distX, distY) -> None:
@@ -90,11 +90,7 @@ def move(distX, distY) -> None:
     print(posY)
 
 
-#command(ser, "G0 X350 \r\n") # rapid motion but does not extrude material ender 5 plus is 350 x 350
-#command(ser, "G1 F20000 Z0.564\r\n") # change layer
-
-
-positions = getJob()
+'''positions = getJob()'''
 
 # move(0, 70)
 time.sleep(2)
@@ -102,17 +98,53 @@ time.sleep(2)
 
 @app.route('/')
 def index():
-    return render_template('website/index.html')
+    return render_template('./website/index.html')
 
-@app.route('/test', methods=['POST'])
-def test():
+
+@app.route('/cart/store', methods=['POST'])
+def cart_store():
+   output = request.get_json()
+   result = json.loads(output)
+   print(result)
+
+   return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+
+   
+   
+   
+@app.route('/catalog/get', methods=['POST'])
+
+def products_get():
+    # SQL code that generates a catalog like this goes here:
+    catalog = [
+        {
+            "name":"10 Ω Motstander",
+            "description":"Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
+            "category":"Komponenter / Motstander",
+            "bin":"EC1",
+            "availability": True
+        },
+        {
+            "name":"20 Ω Motstander",
+            "description":"Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
+            "category":"Komponenter / Motstander",
+            "bin":"F3A",
+            "availability": True
+        }
+    ]
+    
+
+    return json.dumps(json.loads(catalog)), 200, {'ContentType':'application/json'} 
+
+
+@app.route('/containers/get', methods=['POST'])
+def containers_push():
     output = request.get_json()
-    print(output) # This is the output that was stored in the JSON within the browser
-    print(type(output))
+
     result = json.loads(output) #this converts the json output to a python dictionary
-    print(result) # Printing the new dictionary
-    print(type(result))#this shows the json converted as a python dictionary
-    return result
+    
+    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
+    app.run(host="0.0.0.0", port=80, debug=True)
