@@ -146,13 +146,13 @@ document.getElementById('logInButton').addEventListener('click', () => {
 
 // Save cart
 document.getElementById('save-cart').addEventListener('click', () => {
-  fetch('https://reqbin.com/echo/post/json', {
+  fetch('./cart/store', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ "id": 78912 })
+    body: JSON.stringify({"username" : username, "cart" : cart})
   })
   
   .then(response => response.json())
@@ -164,7 +164,6 @@ document.getElementById('order-cart').addEventListener('click', () => {
   document.getElementById('offcanvasRight').classList.remove('show');
 
   // Send results
-
 
   cart.forEach(id => {
     console.log(cart);

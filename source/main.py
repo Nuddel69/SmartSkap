@@ -101,9 +101,20 @@ def index():
     return render_template('./website/index.html')
 
 
+@app.route('/cart/store', methods=['POST'])
+def cart_store():
+   output = request.get_json()
+   result = json.loads(output)
+   print(result)
+
+   return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+
+   
+   
+   
 @app.route('/catalog/get', methods=['POST'])
+
 def products_get():
-    
     # SQL code that generates a catalog like this goes here:
     catalog = [
         {
@@ -119,20 +130,6 @@ def products_get():
             "category":"Komponenter / Motstander",
             "bin":"F3A",
             "availability": True
-        },
-        {
-            "name":"Servoer",
-            "description":"Servomotor er en elektrisk, hydraulisk eller pneumatisk motor som driver utstyr som skal følge en annen bevegelse, et hjelpeaggregat som forsterker utgangssignalet fra en regulator. Den muliggjør regulering av lineær eller angulær posisjon, hastighet og akselerasjon.",
-            "category":"Komponenter / Motorer",
-            "bin":"BCC",
-            "availability": False
-        },
-        {
-            "name":"Kondensatorer",
-            "description":"Kondensator er en passiv, elektrisk komponent som består av to ledere med en isolator mellom. En kondensator har kapasitans, det vil si evne til å oppta ladning og å lagre elektrisk energi i et elektrisk felt.",
-            "category":"Komponenter / Kondensatorer",
-            "bin":"23A",
-            "availability": True
         }
     ]
     
@@ -146,7 +143,6 @@ def containers_push():
 
     result = json.loads(output) #this converts the json output to a python dictionary
     
-
     return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
 
 
