@@ -1,5 +1,6 @@
 **/.DS_Store
 **/source/database
+**/venv
 *vscode/*
 
 !.vscode/settings.json
