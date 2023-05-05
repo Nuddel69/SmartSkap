@@ -1,5 +1,5 @@
 import json
-from flask import request
+from flask import request, jsonify
 from flask import Flask, render_template
 import serial
 '''import mysql.connector'''
@@ -105,7 +105,8 @@ def not_found(e):
 @app.route('/')
 def index():
     return render_template('index.html')
-   
+
+
 
 @app.route('/cart/store', methods=['POST'])
 def cart_store():
@@ -129,27 +130,28 @@ def cart_get():
 
 @app.route('/catalog/get', methods=['POST'])
 
-def products_get():
+def catalog_get():
+    
     # SQL code that generates a catalog like this goes here:
     catalog = [
         {
             "name":"10 Ω Motstander",
             "description":"Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
             "category":"Komponenter / Motstander",
-            "bin":"EC1",
+            "bin":["EC1"],
             "availability": True
         },
         {
             "name":"20 Ω Motstander",
             "description":"Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
             "category":"Komponenter / Motstander",
-            "bin":"F3A",
+            "bin":["F3A"],
             "availability": True
         }
     ]
     
 
-    return json.dumps(json.loads(catalog)), 200, {'ContentType':'application/json'} 
+    return jsonify(catalog)
 
 
 @app.route('/containers/get', methods=['POST'])

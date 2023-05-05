@@ -96,10 +96,12 @@ $(window).on('load', function() {
   username = readCookie("username");
   
   // Call API to get catalog
-  $.getJSON("./catalog.json", function(result){
-
+  $.post("./catalog/get", JSON.stringify(username), function(result, textStatus){
+    
     catalog = result;
-    // Display products from returned JSON 
+    // Display products from returned JSON
+
+    console.log(catalog);
 
     catalog.forEach(product => {
 
@@ -143,7 +145,7 @@ $(window).on('load', function() {
 
     $( ".cart-nr" ).text(cart.length);
 
-  });
+  }, "json");
 
 });
 
