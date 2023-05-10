@@ -127,6 +127,7 @@ def catalog_get():
     # SQL code that generates a catalog like this goes here:
     catalog = [
         {
+            "id" : "1",
             "name":"10 Ω Motstander",
             "description":"Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
             "category":"Komponenter / Motstander",
@@ -134,6 +135,7 @@ def catalog_get():
             "availability": True
         },
         {
+            "id" : "2",
             "name":"20 Ω Motstander",
             "description":"Motstand, også kalt resistor, er en topolet, passiv elektronisk komponent som brukes for å etablere en resistans (elektrisk motstand) i en elektrisk krets.",
             "category":"Komponenter / Motstander",
