@@ -112,7 +112,7 @@ $(window).on('load', function() {
         var availability = `<span class="badge bg-danger rounded-pill">Ikke på lager</span>`;
       }
 
-      console.log(product.id);
+      console.log(product);
 
       $( "#inventory-list" ).prepend(`<a class="inventory-element list-group-item justify-content-between align-items-center" data-bs-toggle="list" href="#pane-${product.id}">${product.name}${availability}</a>`);
       $( "#products" ).prepend(`<div class="product tab-pane" id="pane-${product.id}">
