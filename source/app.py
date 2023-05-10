@@ -90,41 +90,33 @@ def move(distX, distY) -> None:
     print(posY)
 
 
-'''positions = getJob()'''
-
 # move(0, 70)
 time.sleep(2)
 # ser.close()
 
-@app.errorhandler(404)
-def not_found(e):
-  
-# defining function
-  return render_template("404.html")
-
 @app.route('/')
 def index():
-    return render_template('index.html')
+  return render_template('index.html')
 
 
 
 @app.route('/cart/store', methods=['POST'])
 def cart_store():
-   output = request.get_json()
-   result = json.loads(output)
-   print(result)
+  result = request.get_json()
+  # Do something with the result
+  print(result)
 
-   return json.dumps({'success':True}), 200, {'ContentType':'application/json'}
+  return jsonify({'success':True})
 
 
 
 @app.route('/cart/get', methods=['POST'])
 def cart_get():
    
-   # Get username and return cart
-   cart = [1, 2]
-   
-   return json.dumps(json.loads(cart)), 200, {'ContentType':'application/json'}
+  # Get username and return cart
+  cart = [1, 2]
+
+  return jsonify(cart)
 
 
 
@@ -156,12 +148,12 @@ def catalog_get():
 
 @app.route('/containers/get', methods=['POST'])
 def containers_push():
-    output = request.get_json()
+  result = request.get_json()
+  # Do something with the result
+  print(result)
 
-    result = json.loads(output) #this converts the json output to a python dictionary
-    
-    return json.dumps({'success':True}), 200, {'ContentType':'application/json'} 
+  return jsonify({'success':True})
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)
+  app.run(host="0.0.0.0", debug=True)
