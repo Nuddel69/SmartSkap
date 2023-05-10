@@ -78,6 +78,7 @@ function addToCart(id){
   }
 
   cart.push(id);
+  console.log(id);
   
   $( ".cart-list" ).append( `<li class="cart-element list-group-item justify-content-between align-items-center" data-productid="${product.id}">${product.name}<button class="btn" onClick="removeFromCart(${product.id})"><i class="text-primary fa-regular fa-trash-can"></i></button></li>` );
 
