@@ -51,6 +51,7 @@ const showSidenavOptions = () => {
 // Catalog and cart logic
 
 var catalog;
+var cart;
 
 
 function removeFromCart(id){
@@ -98,12 +99,8 @@ $(window).on('load', function() {
   
   // Call API to get catalog
   $.post("./catalog/get", JSON.stringify(username), function(result, textStatus){
-    
     catalog = result;
     // Display products from returned JSON
-
-    console.log(catalog);
-
     catalog.forEach(product => {
 
       if(product.availability){
@@ -132,24 +129,26 @@ $(window).on('load', function() {
     // Load Cart
     
     // Load cart from flask as JSON
-    cart = [];
+    $.post("./cart/get", JSON.stringify(username), function(result, textStatus){
+      cart = result;
 
-    $(".cart-nr").text = cart.length;
-    cart.forEach(id => {
-      product = catalog.find(x => x.id == id);
-      
-      if(!product){
-        removeFromCart(id)
-        return;
-      }
+      $(".cart-nr").text = cart.length;
+      cart.forEach(id => {
+        product = catalog.find(x => x.id == id);
+        
+        if(!product){
+          removeFromCart(id)
+          return;
+        }
 
-      $( ".cart-list" ).append( `<li class="cart-element list-group-item justify-content-between align-items-center" data-productid="${product.id}">${product.name}<button class="btn" onClick="removeFromCart(${product.id})"><i class="text-primary fa-regular fa-trash-can"></i></button></li>` );
-    });
+        $( ".cart-list" ).append( `<li class="cart-element list-group-item justify-content-between align-items-center" data-productid="${product.id}">${product.name}<button class="btn" onClick="removeFromCart(${product.id})"><i class="text-primary fa-regular fa-trash-can"></i></button></li>` );
+      });
 
-    $( ".cart-nr" ).text(cart.length);
+      $( ".cart-nr" ).text(cart.length);
+
+    }, "json");
 
   }, "json");
-
 });
 
 
@@ -172,14 +171,25 @@ document.getElementById('save-cart').addEventListener('click', () => {
   })
   
   .then(response => response.json())
-  .then(response => console.log(JSON.stringify(response)))
+  .then(response => console.log(JSON.stringify(response)));
 });
 
 
+// Order cart
 document.getElementById('order-cart').addEventListener('click', () => { 
   document.getElementById('offcanvasRight').classList.remove('show');
 
   // Send results
+  fetch('./containers/get', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"username" : username, "cart" : cart})
+  })
+  .then(response => response.json())
+  .then(response => console.log(JSON.stringify(response)));
 
   cart.forEach(id => {
     console.log(cart);

@@ -2,12 +2,19 @@ import json
 from flask import request, jsonify
 from flask import Flask, render_template
 import serial
-'''import mysql.connector'''
+import mysql.connector
 import time
 from datetime import datetime
 import math
 
 app = Flask(__name__)
+
+mydb = mysql.connector.connect(
+  host="10.9.37.16",
+  user="root",
+  password="my_secret_password",
+  database="app_db"
+)
 
 posX: float = 0.0
 posY: float = 0.0
@@ -114,7 +121,10 @@ def cart_store():
 def cart_get():
    
   # Get username and return cart
-  cart = [1, 2]
+  mycursor = mydb.cursor()
+  mycursor.execute("SELECT cart.productID FROM cart")
+  cart = [element for tupl in mycursor.fetchall() for element in tupl]
+  print(cart)
 
   return jsonify(cart)
 
@@ -152,7 +162,11 @@ def catalog_get():
 def containers_push():
   result = request.get_json()
   # Do something with the result
-  print(result)
+  products = result["cart"]
+
+  mycursor = mydb.cursor()
+  mycursor.execute("SELECT DISTINCT containers.productID, containers.code, inventory.position FROM inventory LEFT JOIN containers ON containers.binID = inventory.binID WHERE containers.productID IN (%d)" % ', '.join(products))
+  cart = [e for t in mycursor.fetchall() for e in t]
 
   return jsonify({'success':True})
 
